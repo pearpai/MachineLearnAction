@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from math import log
+
 from numpy import *
 
 
@@ -167,6 +168,14 @@ def spamTest():
     # 返回计算错误的 概率
     print 'the error rate is: ', float(errorCount) / len(testSet)
 
+
+def calcMostFreq(vocabList, fullText):
+    import operator
+    freqDict = {}
+    for token in vocabList:
+        freqDict[token] = fullText.count(token)
+    sortedFreq = sorted(freqDict.iteritems(), key=operator.itemgetter(1), reverse=True)
+    return sortedFreq[:30]
 
 if __name__ == '__main__':
     testingNB()
